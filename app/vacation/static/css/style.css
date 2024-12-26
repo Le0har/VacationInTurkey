@@ -1,0 +1,130 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-size: 16px;
+    font-weight: 400;
+    color: #000;
+    min-width: 320px;
+}
+
+img {
+    min-width: 100%;
+    height: auto;
+}
+
+section {
+    padding: 50px 0;
+}
+
+a {
+    color: #111;
+}
+
+a:hover {
+    color: #555;
+}
+
+/* header */
+.navbar-nav {
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.navbar-nav .dropdown-menu {
+    width: 100%;
+}
+
+.top-menu li a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #111;
+    height: 1px;
+    transition: all 0.3s;
+    transform: scale(0);
+}
+
+.top-menu li a:hover::after {
+    transform: scale(1);
+}
+/* header */
+
+/* carousel */
+.my-carousel {
+    padding: 0;
+}
+
+.my-carousel .carousel-item {
+    display: flex;
+    max-height: 600px;
+}
+
+.my-carousel .carousel-item img {
+    object-fit: cover;
+}
+/* carousel */
+
+/* title */
+.my-title {
+    padding-top: 50px;
+}
+/* title */
+
+/* city card */
+.city-card {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+}
+
+.city-card:hover {
+    box-shadow: 0 14px 30px -15px rgba(0, 0, 0, 0.75)
+}
+
+.city-thumb a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    padding: 20px;
+}
+
+.city-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.city-details {
+    padding: 20px;
+}
+
+.city-details h4 a{
+    font-weight: 500;
+    display: block;
+    text-decoration: none;
+}
+
+.city-details p{
+    font-size: 15px;
+    color: #999;
+}
+
+.city-bottom-details {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.city-links a {
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+/* city card */
+
+/* footer */
+.footer {
+    background-color: #447b9b;
+    font-size: 18px;
+}
+/* footer */
