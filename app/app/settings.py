@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-tj(zvqtz!lu7n&-kbfar!fgtlohhg5-2$ggkc2(@#&n-yvy_rj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '31.128.44.101', 'vacationfocus.ru', 'www.vacationfocus.ru']
 
 
 # Application definition
@@ -121,8 +121,14 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+

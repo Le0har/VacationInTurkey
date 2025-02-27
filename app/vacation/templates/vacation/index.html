@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'vacation/base.html' %}
 
 {% block title %}
     Vacation in Turkey
@@ -46,7 +46,7 @@
 <!-- Title -->
 <div class="container text-center my-title">
     <div class="row">
-        <h1>Достопримечательности Турции в фотографиях 2020 года</h1>
+        <h1>📸 Фотопутешествие по Турции 2020 года</h1>
     </div>
 </div>
 <!-- Title -->
@@ -58,16 +58,24 @@
             <div class="col-lg-4 col-sm-6 mb-3">
                 <div class="city-card">
                     <div class="city-thumb">
-                        <a href="#"><img src="{% static 'images/card_antalya.jpg' %}" alt="antalya"></a>
+                        <a href="{% url 'vacation:antalya-list' %}"><img src="{% static 'images/card_antalya.jpg' %}" alt="antalya"></a>
                     </div>
                     <div class="city-details">
-                        <h4><a href="#">Анталия</a></h4>
-                        <p>Бодборка фотографий этого города</p>
+                        <h4><a href="{% url 'vacation:antalya-list' %}">Анталия</a></h4>
+                        <p>Город в объективе путешественника</p>
                         <div class="city-bottom-details d-flex justify-content-between">
                             <i>Сведения о погоде</i>
                             <div class="city-links">
-                                <a href="#"><i class="bi bi-thermometer-sun"></i></a>
-                                <a href="#"><i class="bi bi-water"></i></a>
+                                <button type="button" class="btn btn-light" data-bs-toggle="popover" 
+                                    data-bs-trigger="focus" data-bs-placement="bottom" 
+                                    data-bs-content="Температура воздуха {{ antalya.air_temp }}&deg;C">
+                                    <i class="bi bi-thermometer-sun"></i>
+                                </button>
+                                <button type="button" class="btn btn-light" data-bs-toggle="popover" 
+                                    data-bs-trigger="focus" data-bs-placement="bottom" 
+                                    data-bs-content="Температура воды {{ antalya.sea_temp }}&deg;C">
+                                    <i class="bi bi-water"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -77,16 +85,24 @@
             <div class="col-lg-4 col-sm-6 mb-3">
                 <div class="city-card">
                     <div class="city-thumb">
-                        <a href="#"><img src="{% static 'images/card_side.jpg' %}" alt="side"></a>
+                        <a href="{% url 'vacation:side-list' %}"><img src="{% static 'images/card_side.jpg' %}" alt="side"></a>
                     </div>
                     <div class="city-details">
-                        <h4><a href="#">Сиде</a></h4>
-                        <p>Бодборка фотографий этого города</p>
+                        <h4><a href="{% url 'vacation:side-list' %}">Сиде</a></h4>
+                        <p>Город в объективе путешественника</p>
                         <div class="city-bottom-details d-flex justify-content-between">
                             <i>Сведения о погоде</i>
                             <div class="city-links">
-                                <a href="#"><i class="bi bi-thermometer-sun"></i></a>
-                                <a href="#"><i class="bi bi-water"></i></a>
+                                <button type="button" class="btn btn-light" data-bs-toggle="popover" 
+                                    data-bs-trigger="focus" data-bs-placement="bottom" 
+                                    data-bs-content="Температура воздуха {{ side.air_temp }}&deg;C">
+                                    <i class="bi bi-thermometer-sun"></i>
+                                </button>
+                                <button type="button" class="btn btn-light" data-bs-toggle="popover" 
+                                    data-bs-trigger="focus" data-bs-placement="bottom" 
+                                    data-bs-content="Температура воды {{ side.sea_temp }}&deg;C">
+                                    <i class="bi bi-water"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -96,16 +112,24 @@
             <div class="col-lg-4 col-sm-6 mb-3">
                 <div class="city-card">
                     <div class="city-thumb">
-                        <a href="#"><img src="{% static 'images/card_kemer.jpg' %}" alt="kemer"></a>
+                        <a href="{% url 'vacation:kemer-list' %}"><img src="{% static 'images/card_kemer.jpg' %}" alt="kemer"></a>
                     </div>
                     <div class="city-details">
-                        <h4><a href="#">Кемер</a></h4>
-                        <p>Бодборка фотографий этого города</p>
+                        <h4><a href="{% url 'vacation:kemer-list' %}">Кемер</a></h4>
+                        <p>Город в объективе путешественника</p>
                         <div class="city-bottom-details d-flex justify-content-between">
                             <i>Сведения о погоде</i>
                             <div class="city-links">
-                                <a href="#"><i class="bi bi-thermometer-sun"></i></a>
-                                <a href="#"><i class="bi bi-water"></i></a>
+                                <button type="button" class="btn btn-light" data-bs-toggle="popover" 
+                                    data-bs-trigger="focus" data-bs-placement="bottom" 
+                                    data-bs-content="Температура воздуха {{ kemer.air_temp }}&deg;C">
+                                    <i class="bi bi-thermometer-sun"></i>
+                                </button>
+                                <button type="button" class="btn btn-light" data-bs-toggle="popover" 
+                                    data-bs-trigger="focus" data-bs-placement="bottom" 
+                                    data-bs-content="Температура воды {{ kemer.sea_temp }}&deg;C">
+                                    <i class="bi bi-water"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -116,4 +140,12 @@
     </div>
 </section>
 <!-- Cards -->
+
+<!-- Bootstrap JavaScript Bundle with Popper -->
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        let popovers = document.querySelectorAll('[data-bs-toggle="popover"]');
+        popovers.forEach(function (popover) {new bootstrap.Popover(popover);});
+    });
+</script>
 {% endblock %}
