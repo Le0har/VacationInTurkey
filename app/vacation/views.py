@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import aiohttp
 import asyncio
+from .models import Photo
 
 
 API_KEY = "790a747b54494fe0b4e120429252602"
@@ -35,15 +36,21 @@ async def index_page(request):
 
 
 def antalya_list(request):
-
-    return render(request, 'vacation/antalya_list.html')
+    context = {
+        'photos': Photo.objects.filter(city=1)
+    }
+    return render(request, 'vacation/antalya_list.html', context)
 
 
 def side_list(request):
-
-    return render(request, 'vacation/side_list.html')
+    context = {
+        'photos': Photo.objects.filter(city=2)
+    }
+    return render(request, 'vacation/side_list.html', context)
 
 
 def kemer_list(request):
-
-    return render(request, 'vacation/kemer_list.html')
+    context = {
+        'photos': Photo.objects.filter(city=3)
+    }
+    return render(request, 'vacation/kemer_list.html', context)

@@ -7,6 +7,33 @@
 {% block content %}
 {% load static %}
 
-<h1>Тут будут фото Сиде</h1>
+<!-- Title -->
+<div class="container text-center my-title">
+    <div class="row">
+        <h1>📸 Сиде в объективе путешественника</h1>
+    </div>
+</div>
+<!-- Title -->
+
+<!-- Cards -->
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            {% for photo in photos %}
+                <div class="col-lg-4 col-sm-6 mb-3">
+                    <div class="city-card">
+                        <div class="city-thumb">
+                            <a href="{% url 'vacation:side-list' %}"><img src="{% static 'images/' %}{{ photo.name }}.jpg" alt="side"></a>
+                        </div>
+                        <div class="city-details">
+                            <p>{{ photo.description }}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<!-- Cards -->
 
 {% endblock %}
