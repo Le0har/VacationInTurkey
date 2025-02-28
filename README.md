@@ -1,7 +1,7 @@
 # VacationInTurkey
 
-Полнофункциональное веб-приложение на Django для просмотра фотографий.
-Деплой проекта произведен на сервере с помощью Gunicorn и Nginx.
+Полнофункциональное веб-приложение на Django для просмотра фотографий.  
+Деплой проекта произведен на сервере с помощью Gunicorn и Nginx.  
 [https://www.vacationfocus.ru](https://www.vacationfocus.ru)
 
 ## Возможности VacationInTurkey
