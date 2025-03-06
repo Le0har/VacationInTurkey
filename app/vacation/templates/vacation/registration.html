@@ -1,0 +1,64 @@
+{% extends 'vacation/base.html' %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block content %}
+
+<!-- Title -->
+<div class="container text-center my-title">
+    <div class="row">
+        <h1>Регистрация нового пользователя</h1>
+    </div>
+</div>
+<!-- Title -->
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <form action="{% url 'vacation:register' %}" method="post">
+                    {% csrf_token %}
+
+                    <div class="row mb-3">
+                        <label for="{{ form.username.id_for_label }}" class="col-md-2 col-form-label text-end">Имя пользователя</label>
+                        <div class="col-md-10">
+                            {{ form.username }}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="{{ form.email.id_for_label }}" class="col-md-2 col-form-label text-end">Email</label>
+                        <div class="col-md-10">
+                            {{ form.email }}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="{{ form.password1.id_for_label }}" class="col-md-2 col-form-label text-end">Пароль</label>
+                        <div class="col-md-10">
+                            {{ form.password1 }}
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <label for="{{ form.password2.id_for_label }}" class="col-md-2 col-form-label text-end">Подтверждение пароля</label>
+                        <div class="col-md-10">
+                            {{ form.password2 }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="offset-md-2 col-md-10">
+                            <button type="submit" class="btn btn-outline-dark">Создать нового пользователя</button>
+                        </div>
+                    </div>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

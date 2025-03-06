@@ -99,13 +99,13 @@ a:hover {
     padding: 20px;
 }
 
-.city-details h4 a{
+.city-details h4 a {
     font-weight: 500;
     display: block;
     text-decoration: none;
 }
 
-.city-details p{
+.city-details p {
     font-size: 15px;
     color: #999;
 }
@@ -122,9 +122,16 @@ a:hover {
 
 /* city card */
 
+/* photo */
+.my-photo img {
+    width: 200px;
+}
+/* photo */
+
 /* footer */
 .footer {
     background-color: #447b9b;
     font-size: 18px;
 }
 /* footer */
+

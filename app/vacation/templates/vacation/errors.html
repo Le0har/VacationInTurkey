@@ -1,0 +1,25 @@
+{% extends 'vacation/base.html' %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block content %}
+
+<!-- Title -->
+<div class="container text-center my-title">
+    <div class="row">
+        <h1>Ошибка</h1>
+    </div>
+</div>
+<!-- Title -->
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <p>{{ error }}</p>
+        </div>
+    </div>
+</section>
+
+{% endblock %} 

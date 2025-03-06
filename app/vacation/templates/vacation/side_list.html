@@ -23,7 +23,7 @@
                 <div class="col-lg-4 col-sm-6 mb-3">
                     <div class="city-card">
                         <div class="city-thumb">
-                            <a href="{% url 'vacation:side-list' %}"><img src="{% static 'images/cities/' %}{{ photo.name }}.jpg" alt="side"></a>
+                            <a href="{% url 'vacation:photo-detail' photo.id %}"><img src="{% static 'images/cities/' %}{{ photo.name }}.jpg" alt="side"></a>
                         </div>
                         <div class="city-details">
                             <p>{{ photo.description }}</p>

@@ -1,0 +1,56 @@
+{% extends 'vacation/base.html' %}
+
+{% block title %}
+    Photo #{{ photo.pk }}
+{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<!-- Title -->
+<div class="container text-center my-title">
+    <div class="row">
+        <h1>Фотография города {{ photo.city }}</h1>
+    </div>
+</div>
+<!-- Title -->
+
+<!-- Photo -->
+<section class="main-content">
+    <div class="container my-photo">
+
+        <div class="row">
+            <p>{{ photo.description }}</p>
+            <img src="{% static 'images/cities/' %}{{ photo.name }}.jpg" alt="photo">
+        </div>
+
+        <br>
+        <p>Комментарии к фото</p>
+        <div class="row">
+            <div class="col">
+                <table class="table table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th class="fw-normal" scope="col">Автор</th>
+                        <th class="fw-normal" scope="col">Комментарий</th>
+                        <th class="fw-normal" scope="col">Дата создания</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for comment in photo.comments.all %}
+                        <tr>
+                            <td>{{ comment.author.username }}</td>
+                            <td>{{ comment.text }}</td>
+                            <td>{{ comment.created_at }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>    
+
+    </div>
+</section>
+<!-- Photo -->
+
+{% endblock %}

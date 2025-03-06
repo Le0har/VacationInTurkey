@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import aiohttp
 import asyncio
 from .models import Photo
+from django.core.exceptions import ObjectDoesNotExist
+from .forms import UserRegistrationForm 
 
 
 API_KEY = "790a747b54494fe0b4e120429252602"
@@ -54,3 +56,32 @@ def kemer_list(request):
         'photos': Photo.objects.filter(city=3)
     }
     return render(request, 'vacation/kemer_list.html', context)
+
+
+def photo_detail(request, photo_id):
+    try:
+        photo = Photo.objects.get(id=photo_id)
+    except ObjectDoesNotExist:
+        context = {
+            'error': f'Фотография с ID = {photo_id} не найдена!'
+        }
+        return render(request, 'vacation/errors.html', context)
+    else:
+        context = {
+            'photo': photo,
+        }
+        return render(request, 'vacation/photo_detail.html', context)
+    
+
+def create_user(request):
+    if request.method == 'GET':
+        form = UserRegistrationForm()
+    if request.method == 'POST':
+        form = UserRegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('vacation:index')
+    context = {
+        'form': form,
+    }
+    return render(request, 'vacation/registration.html', context)
