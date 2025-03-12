@@ -21,7 +21,8 @@ async def fetch_weather(city):
             weather_dict = {
                 'city': city,
                 'air_temp': data_weather['forecast']['forecastday'][0]['day']['maxtemp_c'],
-                'sea_temp': data_weather['forecast']['forecastday'][0]['hour'][0]['water_temp_c']
+                # 'sea_temp': data_weather['forecast']['forecastday'][0]['hour'][0]['water_temp_c'], paid plan only
+                'sea_temp': 25,
             }
             return weather_dict
 
