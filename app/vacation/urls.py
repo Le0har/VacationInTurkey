@@ -11,4 +11,7 @@ urlpatterns = [
     path('photos/kemer', views.kemer_list, name='kemer-list'),
     path('photos/<int:photo_id>', views.photo_detail, name='photo-detail'),
     path('register', views.create_user, name='register'),
+    path('login', views.login, name='login'),
+    path('logout', views.logout, name='logout'),
+    path('comment/add', views.comment_add, name='comment-add'),
 ]

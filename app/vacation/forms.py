@@ -1,4 +1,4 @@
-from django.forms import EmailField, EmailInput, ModelForm, TextInput, CharField, PasswordInput
+from django.forms import EmailField, EmailInput, ModelForm, TextInput, CharField, PasswordInput, Textarea
 from .models import Comment
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -33,4 +33,17 @@ class UserRegistrationForm(ModelForm):
         if commit:
             user.save()
         return user
-    
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['text']
+        
+    text = CharField(label='', widget=Textarea(attrs={
+        'class': 'form-control', 
+        'rows': 5, 
+        'placeholder': 'Введите комментарий...',
+        'style': 'resize: none;'
+        }))
+      

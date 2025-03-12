@@ -31,9 +31,9 @@
                 <table class="table table-striped">
                     <thead class="thead-dark">
                     <tr>
-                        <th class="fw-normal" scope="col">Автор</th>
-                        <th class="fw-normal" scope="col">Комментарий</th>
-                        <th class="fw-normal" scope="col">Дата создания</th>
+                        <th class="fw-normal col-2" scope="col">Автор</th>
+                        <th class="fw-normal col-8" scope="col">Комментарий</th>
+                        <th class="fw-normal col-2" scope="col">Дата создания</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -41,11 +41,27 @@
                         <tr>
                             <td>{{ comment.author.username }}</td>
                             <td>{{ comment.text }}</td>
-                            <td>{{ comment.created_at }}</td>
+                            <td>{{ comment.created_at|date:"d.m.Y H:i" }}</td>
                         </tr>
                         {% endfor %}
                     </tbody>
                 </table>
+
+                <br>
+                {% if request.user.is_authenticated %}
+                    <form action="{% url 'vacation:comment-add' %}" method="POST">
+                        {% csrf_token %}
+                        {{ comment_form }}
+                        <input type="hidden" name="photo_id" value="{{ photo.id }}"> 
+                        <br>    
+                        <button type="submit" class="btn btn-outline-dark">Добавить комментарий</button>  
+                    </form>
+                {% else %}
+                    <br>
+                    <p>Добавлять комментарии могут только зарегистрированные пользователи</p>
+                    <p>Пожалуйста <a href="{% url 'vacation:register' %}">зарегистрируйтесь</a></p>
+                {% endif %}
+
             </div>
         </div>    
 

@@ -46,24 +46,32 @@
                         <a class="nav-link" href="{% url 'vacation:kemer-list' %}">Кемер</a>
                     </li>
                 </ul>
-
-                <div class="navbar-nav mr-right nav-item dropdown dropdown-menu-right">
-                    <a class="btn btn-outline-warning my-2 my-sm-2 mx-1 dropdown-toggle" href="#" id="navbarDropdown"
-                        role="button" data-bs-toggle="dropdown" aria-haspopup="true"
-                        aria-expanded="false">Авторизация</a>
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <form class="w-100 px-4 py-3" action="">
-                            <div class="mb-3">
-                                <input type="text" name="username" class="form-control" placeholder="Имя пользователя" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="password" name="password" class="form-control" placeholder="пароль" required>
-                            </div>
-                            <button type="submit" class="btn btn-warning w-100">Войти</button>
-                        </form>
+                {% if is_auth %}
+                    <span style="color: white;">Добро пожаловать, {{ request.user.username }}</span>&nbsp;&nbsp;
+                    <a href="{% url 'vacation:logout' %}" class="btn btn-outline-light my-sm-2 mx-1">Выйти</a>
+                {% else %}
+                    {% if error %} 
+                        <span style="color: white;">{{ error }}</span>&nbsp;&nbsp;
+                    {% endif %}
+                    <div class="navbar-nav mr-right nav-item dropdown dropdown-menu-right">
+                        <a class="btn btn-outline-warning my-2 my-sm-2 mx-1 dropdown-toggle" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">Авторизация</a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <form class="w-100 px-4 py-3" action="{% url 'vacation:login' %}" method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <input type="text" name="username" class="form-control" placeholder="Имя пользователя" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="password" name="password" class="form-control" placeholder="пароль" required>
+                                </div>
+                                <button type="submit" class="btn btn-warning w-100">Войти</button>
+                            </form>
+                        </div>
+                        <a href="{% url 'vacation:register' %}" class="btn btn-outline-light my-sm-2 mx-1">Регистрация</a>
                     </div>
-                    <a href="{% url 'vacation:register' %}" class="btn btn-outline-light my-sm-2 mx-1">Регистрация</a>
-                </div>
+                {% endif %}    
             </div>
         </div>
     </nav>
